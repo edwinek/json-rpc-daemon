@@ -1,0 +1,29 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.0.RELEASE'
+    id 'java'
+}
+
+ext {
+    jsonrpc4jVersion = '1.5.3'
+    springBootVersion = '2.1.0.RELEASE'
+}
+
+bootJar {
+    buildDir = "/tmp"
+    launchScript()
+    libsDirName = "/opt/${rootProject.name}"
+    mainClassName = "uk.edwinek.service.JsonRpcService"
+}
+
+dependencies {
+    compile "org.springframework.boot:spring-boot-starter-web:${project.springBootVersion}"
+    compile "com.github.briandilley.jsonrpc4j:jsonrpc4j:${project.jsonrpc4jVersion}"
+}
+
+repositories {
+    jcenter()
+}
+
+test {
+    useJUnitPlatform()
+}
