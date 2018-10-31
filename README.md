@@ -22,7 +22,7 @@ The daemon runs on an Ubuntu endpoint and exposes a `greeter` JSON-RPC API, runn
     * The service will start in the background.
 2. From a second terminal window on your host machine test the endpoint as follows:
 ```bash
-curl -H "Content-Type:application/json" -d '{"id":"1","jsonrpc":"2.0","method":"greet","params":{"name":"Edwinek}}' http://localhost:8080/greeter
+curl -H "Content-Type:application/json" -d '{"id":"1","jsonrpc":"2.0","method":"greet","params":{"name":"Edwinek"}}' http://localhost:8080/greeter
 ``` 
 3. From the Docker terminal, stop the service with `service json-rpc-daemon stop`
 4. Observe that the service has stopped by inspecting the log on the Docker terminal in `/var/log/json-rpc-daemon`
