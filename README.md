@@ -38,7 +38,7 @@ curl -H "Content-Type:application/json" -d '{"id":"1","jsonrpc":"2.0","method":"
  
 ### Project breakdown
 #### Docker container
-The container runs the minimal image of Ubuntu 18.04, with the OpenJDK Java 8 JDK / runtime. I opted for Ubuntu over something like Alpine, for the`SysVinit` support. Unlike the `example-daemon` project, an additional binary was not required to hook the OS calls into the daemon - Spring Boot gives us this 'for free'.
+The container runs the OpenJDK Java 8 image. I opted for a Debian based OS over something like Alpine, for the`SysVinit` support. Unlike the `example-daemon` project, an additional binary was not required to hook the OS calls into the daemon - Spring Boot gives us this 'for free'. The image already has cached Spring Boot and Gradle Wrapper Jars present.
 #### Gradle
 * The Spring Boot plugin provides the `bootJar`, task and so no modification was required to create a jar-with-dependencies (unlike with the `example-daemon` project). 
 * The `bootJar` task extends the original `jar` task, and so respects the same config; we specify `/tmp` on on the container to ensure that no Docker-owned files are created on the host file system, and as per convention we ensure that the jar is located in the `/opt` directory upon creation. 
